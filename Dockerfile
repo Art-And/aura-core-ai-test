@@ -4,9 +4,10 @@ FROM python:${PYTHON_VERSION}-bookworm
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_INDEX_URL=https://pypi.org/simple \
-    WORKON_HOME=/venv
+    WORKON_HOME=/venv \
+    PYTHONPATH=/app
 
-WORKDIR /app
+WORKDIR /app/api
 
 RUN pip install --no-cache-dir pipenv
 COPY Pipfile Pipfile.lock /app/
@@ -37,4 +38,4 @@ WORKDIR /app/api
 # Expose the port that the application listens on.
 EXPOSE 9000
 ENTRYPOINT ["pipenv", "run"]
-CMD ["manage.py", "runserver", "0.0.0.0:9000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:9000"]

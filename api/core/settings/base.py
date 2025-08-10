@@ -21,7 +21,7 @@ env = environ.Env(
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Take environment variables from .env file
 environ.Env.read_env(os.path.join(BASE_DIR.parent, ".env"))
@@ -175,3 +175,13 @@ CORS_ALLOW_ALL_ORIGINS = True  # For now any origin is allowed
 #     "http://localhost:4000",  # Just my local fronted is allowed
 # ]
 # CORS_ALLOW_CREDENTIALS = True  # Enabling use of cookies for auth
+
+# STORAGE
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
