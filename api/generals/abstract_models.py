@@ -1,7 +1,6 @@
 from django.core.validators import EmailValidator
 from django.db import models
 from django.utils import timezone
-
 from generals.constants import BoolChoices
 
 
@@ -36,6 +35,7 @@ class AccountAbstractModel(models.Model):
 
     class Meta:
         abstract = True
+
 
 class KeyAbstractModel(models.Model):
     """
@@ -158,4 +158,3 @@ class AccountBaseTableModel(BaseAbstractModel, AccountAbstractModel):
 
     class Meta(BaseAbstractModel.Meta):
         abstract = True
-

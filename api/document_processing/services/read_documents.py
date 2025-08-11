@@ -1,8 +1,8 @@
-import io
-from pdfplumber import open as pdf_open
-from generals.constants import FileTypes
 from docx import Document as DocxDocument
+from generals.constants import FileTypes
+import io
 import json
+from pdfplumber import open as pdf_open
 
 
 class ReadDocumentsService:
@@ -17,6 +17,7 @@ class ReadDocumentsService:
     def read_docx(blob_file):
         with DocxDocument(blob_file.download_as_bytes()) as doc:
             return "\n".join(paragraph.text for paragraph in doc.paragraphs)
+
     @staticmethod
     def read_json(blob_file):
         return json.dumps(json.load(blob_file), indent=4)

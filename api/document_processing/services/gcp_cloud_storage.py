@@ -1,8 +1,8 @@
-import uuid
 from datetime import timedelta
-from google.cloud import storage
-from generals import StorageConstants
 from django.conf import settings
+from generals import StorageConstants
+from google.cloud import storage
+import uuid
 
 
 class GCPCloudStorageService:
@@ -16,7 +16,9 @@ class GCPCloudStorageService:
     def get_path_with_name(bucket_path: str, file_name: str) -> str:
         return f"{bucket_path}/{file_name}"
 
-    def generate_file_identifier(self, bucket_path: str, file_name: str) -> tuple[str, str]:
+    def generate_file_identifier(
+        self, bucket_path: str, file_name: str
+    ) -> tuple[str, str]:
         """
         Generates a full file path by combining the provided bucket path with a
         generated unique file name. Returns the full path and the unique file
@@ -38,12 +40,12 @@ class GCPCloudStorageService:
         )
 
     def generate_signed_url(
-            self,
-            file_name: str,
-            bucket_name: str,
-            bucket_path: str,
-            content_type: str,
-            expiration_minutes: int = StorageConstants.LifeTime.DEFAULT.value,
+        self,
+        file_name: str,
+        bucket_name: str,
+        bucket_path: str,
+        content_type: str,
+        expiration_minutes: int = StorageConstants.LifeTime.DEFAULT.value,
     ) -> tuple[str, str]:
         """
         Generate a signed URL to upload a file to a GCP bucket.
@@ -57,7 +59,9 @@ class GCPCloudStorageService:
         """
 
         client = storage.Client(credentials=settings.GS_CREDENTIALS)
-        file_name_identifier, full_path = self.generate_file_identifier(bucket_path, file_name)
+        file_name_identifier, full_path = self.generate_file_identifier(
+            bucket_path, file_name
+        )
         bucket = client.bucket(bucket_name)
         blob = bucket.blob(full_path)
 
@@ -74,7 +78,7 @@ class GCPCloudStorageService:
         source_bucket_name: str,
         source_blob_name: str,
         destination_bucket_name: str,
-        destination_blob_name: str
+        destination_blob_name: str,
     ):
         """
         Copy a file from one bucket to another in Google Cloud Storage.
@@ -96,7 +100,7 @@ class GCPCloudStorageService:
         new_blob = source_bucket.copy_blob(
             blob=source_blob,
             destination_bucket=destination_bucket,
-            new_name=destination_blob_name
+            new_name=destination_blob_name,
         )
         source_blob.delete()
 
