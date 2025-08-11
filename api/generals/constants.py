@@ -24,3 +24,9 @@ class StorageConstants:
     class LifeTime(IntegerChoices):
         DEFAULT = 15, "Default Lifetime (minutes)"
         ONE_DAY = 720, "One Day Lifetime (minutes)"
+
+
+class FileTypes(TextChoices):
+    PDF = "pdf", "application/pdf"
+    JSON = "json", "application/json"
+    DOCX = "docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
