@@ -1,5 +1,4 @@
-from django.db.models import Choices
-from django.db.models import TextChoices, IntegerChoices
+from django.db.models import Choices, IntegerChoices, TextChoices
 
 
 class BoolChoices(Choices):
@@ -12,9 +11,10 @@ MANDATORY_FIELDS_TO_EXCLUDE = [
     "updated_at",
 ]
 
+
 class StorageConstants:
     class Buckets(TextChoices):
-        TEMPORAL = "temporal-aura-core-ai-test",  "Temporal Files"
+        TEMPORAL = "temporal-aura-core-ai-test", "Temporal Files"
         PERMANENT = "aura-core-ai-test", "Permanent Files"
 
     class Paths(TextChoices):
@@ -24,3 +24,12 @@ class StorageConstants:
     class LifeTime(IntegerChoices):
         DEFAULT = 15, "Default Lifetime (minutes)"
         ONE_DAY = 720, "One Day Lifetime (minutes)"
+
+
+class FileTypes(TextChoices):
+    PDF = "pdf", "application/pdf"
+    JSON = "json", "application/json"
+    DOCX = (
+        "docx",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    )

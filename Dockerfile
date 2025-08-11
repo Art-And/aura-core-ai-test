@@ -5,7 +5,9 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_INDEX_URL=https://pypi.org/simple \
     WORKON_HOME=/venv \
-    PYTHONPATH=/app
+    PYTHONPATH=/app \
+    HF_HOME=/app/huggingface_cache
+
 
 WORKDIR /app/api
 
@@ -29,11 +31,17 @@ RUN adduser \
     --uid "${UID}" \
     ai_aura_test_user \
     && chown -R ai_aura_test_user:ai_aura_test_user /app
+RUN mkdir -p /app/huggingface_cache && \
+    chown -R ai_aura_test_user:ai_aura_test_user /app/huggingface_cache && \
+    chmod -R 755 /app/huggingface_cache
 
 # Switch to the non-privileged user to run the application.
 USER ai_aura_test_user
 
 WORKDIR /app/api
+
+RUN pipenv run python -c "from sentence_transformers import SentenceTransformer; \
+    SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')"
 
 # Expose the port that the application listens on.
 EXPOSE 9000
