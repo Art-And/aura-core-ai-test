@@ -130,3 +130,6 @@ coverage.xml
 .pytest_cache/
 /reports/
 *.db
+
+# storage
+aura_test_credentials.json
