@@ -88,6 +88,7 @@ ipython_config.py
 
 # Environments
 .env
+.env.backup
 .venv
 env/
 venv/
@@ -130,3 +131,18 @@ coverage.xml
 .pytest_cache/
 /reports/
 *.db
+
+# storage
+aura_test_credentials.json
+
+# Hugging Face / Transformers caches
+huggingface_cache/
+transformers_cache/
+**/.cache/huggingface/**
+**/.cache/hf/**
+**/.cache/torch/**
+**/.cache/transformers/**
+# HF lock and xet folders
+huggingface_cache/.locks/
+huggingface_cache/xet/
+

@@ -1,114 +1,102 @@
-# Python engineer technical assessment
+# AI Aura test
 
-## Overview
-Design and implement a Scalable Document Analysis System (pipeline) that leverages AI to process, analyze, and extract insights from large collections of documents while maintaining high performance and reliability.
+_Project which help us organize arrays._
 
-## Project Requirements
+## Getting Started 🚀
 
-### Core System Requirements
+_These instructions will allow you to get a working copy of the project directly to your local machine, for development and testing purposes._
 
-1. Create a document processing service that can:
-   - Handle multiple document formats (PDF, DOCX, JSON)
-   - Process documents in parallel
-   - Extract text and maintain document structure
-   - Generate document embeddings
-   - Perform semantic search across documents
-   - Classify documents into categories
-   - Extract key information using custom NER models
+## Pre-requirements 📋
 
-### Technical Requirements
+### Build with
 
-#### Python Implementation
-- Implement the solution using Python 
-- Create modular and extensible code
-- Include proper error handling and logging
-- Implement unit tests and integration tests
+_Main tools for project creation:_
 
-#### AI/ML Components
-- Implement document embedding generation using a model of your choice (explain your selection)
-- Create a custom NER model for information extraction
-- Implement a document classification system
-- Design a semantic search functionality
+* [Django](https://www.djangoproject.com/)
+* [Django Rest Framework](https://www.django-rest-framework.org/)
+* [Python](https://www.python.org/) - 3.12.0 preferably, although you can use whatever you like and configure a venv with the required version
+* [Docker](https://www.docker.com/) - containers
 
-#### Infrastructure
-- Containerize the solution using Docker
-- Create a docker-compose setup for local development
-- Design the system to be cloud-ready (No need to deploy the solution, just provide the architecture diagram)
 
-## Evaluation Criteria
+### Config 🔧
+_Fist step, check your python version:_
 
-Your solution will be evaluated based on:
+_If you have no install python check [this link](https://www.python.org/downloads/) and install it:_
+```
+$ python --version
+```
 
-1. **Code Quality**
-   - Clean, readable, and maintainable code
-   - Proper use of design patterns
-   - Error handling and logging
-   - Testing coverage
-   - Documentation quality
+_Then install docker from [this link](https://www.docker.com/), and then verify the installation:_
 
-2. **System Design**
-   - Architecture scalability
-   - Component isolation
-   - Resource efficiency
-   - Error resilience
-   - Monitoring capabilities
+```
+$ docker --version
+```
 
-3. **AI Implementation**
-   - Model selection justification
-   - Implementation efficiency
-   - Accuracy and performance
-   - Training and evaluation methodology
+_Make sure to create you .env, please review the .env.example to config your own .env correctly_
 
-4. **Innovation**
-   - Creative solutions to problems
-   - Unique features or improvements
-   - Performance optimizations
+_**WARNING**: If you don't config your .env correctly, maybe you will have an error._
 
-## Deliverables
 
-1. **Source Code**
-   - Complete source code with documentation (github repository, you can fork this or branch)
-   - Setup instructions
+_Once your .env is configured, next you have to build docker:_
 
-2. **Documentation**
-   - System architecture diagram
-   - Model selection justification
-   - Performance analysis
-   - Scaling considerations
+```
+$ docker-compose build --no-cache
+```
+_And that's it, you are done to begin._
 
-3. **Docker Configuration**
-   - Environment configuration
-   - Build and run instructions
 
-4. **Presentation**
-   - Brief presentation explaining:
-     - Architecture decisions
-     - Model selections
-     - Scaling strategy
-     - Future improvements
+## Who it works? 🛠️
+ 
+Please run:
+ ```
+ $ docker-compose run --rm --service-ports api
+ ```
+ _Then apply the migrations(if is necessary, since there is a service in docker that runs them automatically)_
+ ```
+ $ docker-compose run --rm --service-ports api python manage.py migrate
+ ```
 
-## Bonus Points
+And that's it, you will start to play!.
 
-- Implementation of A/B testing for model deployment
-- Advanced monitoring and alerting setup
-- Performance optimization techniques
-- Novel approaches to document processing
-- Advanced caching strategies
+## Running test ⚙️
 
-## Time Allocation
+_For these cases we used [pytest](https://docs.pytest.org/en/stable/)_
 
-- Candidates should spend 3-5 days on this project
-- Focus on demonstrating knowledge rather than completing every feature
-- Prioritize core functionality and code quality
-- Document any assumptions and future improvements
+_Please execute:_
+```
+$ docker-compose run --rm api py.test
+```
+_The tests will start running and once finished they should all pass without any problem (unless you broke it)._
 
-## Notes
+_There is a small configuration file, which can be scaled if needed._
 
-- You can use any open-source libraries and models
-- Explain your choice of technologies and frameworks
-- Include any assumptions made during implementation
-- Document known limitations and potential improvements
-- Focus on demonstrating your problem-solving approach
-- Create a clear path for scaling the solution
 
-### Very important: you can request information about the test and communicate via email to otorres@auraresearch.ai / oscar@auraresearch.ai or create an issue in this repository to resolve doubts and discuss technical proposals. Communication and way of working will be evaluated. Not all points are indispensable, but a good argumentation of the architecture/pipeline is required.
+### And the style code tests? ⌨️
+
+_We used [PEP-8](https://www.python.org/dev/peps/pep-0008/) along with [Zen de python](https://www.python.org/dev/peps/pep-0020/)_
+
+_We use dependencies such as:_
+* isort
+* black
+* flake8
+
+_Development dependencies must be installed_
+
+
+_To run your code test, just please execute:_
+
+```
+$ docker-compose run --rm api isort .
+$ docker-compose run --rm api black .
+$ docker-compose run --rm api flake8
+
+```
+
+## Extras 🎁
+
+* Thank you very much for taking a look at my work, I hope you like it. 🤓
+* Invite a beer 🍺 or a coffee ☕ to someone on your team
+* Tell others about this project 📢
+
+---
+⌨️ with 💙 by [AndresIs](https://www.linkedin.com/in/andres-i/) 🌎
