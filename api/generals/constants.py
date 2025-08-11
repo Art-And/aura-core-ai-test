@@ -18,8 +18,8 @@ class StorageConstants:
         PERMANENT = "aura-core-ai-test", "Permanent Files"
 
     class Paths(TextChoices):
-        TEMPORAL_DOCUMENT = "documents/", "Temporal Document"
-        PERMANENT_DOCUMENT = "accounts/documents/", "Permanent Document"
+        TEMPORAL_DOCUMENT = "documents", "Temporal Document"
+        PERMANENT_DOCUMENT = "accounts/documents", "Permanent Document"
 
     class LifeTime(IntegerChoices):
         DEFAULT = 15, "Default Lifetime (minutes)"

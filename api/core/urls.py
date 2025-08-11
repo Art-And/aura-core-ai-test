@@ -21,5 +21,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path("aura_ai_admin/", admin.site.urls),
-    path("", include("document_processing.urls")),
+    path("api/", include("versions.urls")),
 ]
