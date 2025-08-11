@@ -7,7 +7,7 @@ STORAGES["staticfiles"] = {
 STORAGES["default"] = {
     "BACKEND": "storages.backends.gcloud.GoogleCloudStorage",
 }
-GS_BUCKET_NAME = 'nombre-del-bucket'
+GS_BUCKET_NAME = 'aura-core-ai-test'
 GS_CREDENTIALS = (
     service_account.Credentials.from_service_account_file(
         f"{BASE_DIR.parent}/aura_test_credentials.json"

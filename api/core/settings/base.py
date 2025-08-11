@@ -57,6 +57,7 @@ EXTERNAL_APPS = [
     "corsheaders",
 ]
 LOCAL_APPS = [
+    "document_processing.apps.DocumentProcessingConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS + LOCAL_APPS
